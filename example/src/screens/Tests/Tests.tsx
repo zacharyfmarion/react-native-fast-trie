@@ -7,6 +7,7 @@ import { IncorrectResultItem } from '../../components/IncorrectResultItem';
 import { Suite } from '../../components/Suite';
 import { Indentator } from '../../components/Indentator';
 import type { RowItemType } from './types';
+import type { RootStackParamList } from '../params';
 
 function useTestRows(): [RowItemType[], (newResult: RowItemType) => void] {
   const [rows, setRows] = useState<RowItemType[]>([]);
@@ -35,7 +36,7 @@ function useTestRows(): [RowItemType[], (newResult: RowItemType) => void] {
   return [rows, addResult];
 }
 
-type TestingScreenProps = NativeStackScreenProps<any, 'Tests'>;
+type TestingScreenProps = NativeStackScreenProps<RootStackParamList, 'Tests'>;
 
 export function Tests({ route }: TestingScreenProps) {
   const { testRegistrators } = route.params;

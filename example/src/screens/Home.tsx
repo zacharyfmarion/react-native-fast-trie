@@ -1,16 +1,12 @@
 import React, { useState, useCallback } from 'react';
-import type {
-  NativeStackNavigationProp,
-  NativeStackScreenProps,
-} from '@react-navigation/native-stack';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { TestItemType } from './Tests/types';
 import { TEST_LIST } from './Tests/testList';
 import { TestItem } from '../components/TestItem';
 import { Button } from '../components/Button';
-
-type EntryProps = NativeStackScreenProps<any, 'Entry'>;
+import type { RootStackParamList } from './params';
 
 const useTests = (): [
   Array<TestItemType>,
@@ -54,7 +50,8 @@ const useTests = (): [
 
 export function Home() {
   const [tests, toggle, clearAll, checkAll] = useTests();
-  const navigation = useNavigation<NativeStackNavigationProp<any, 'Entry'>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList, 'Home'>>();
   return (
     <View style={styles.mainContainer}>
       <View style={styles.testList}>
@@ -76,7 +73,7 @@ export function Home() {
         <Button
           title="run"
           onPress={() => {
-            navigation.navigate('TestingScreen', {
+            navigation.navigate('Tests', {
               testRegistrators: tests
                 .filter((it) => it.value)
                 .map((it) => it.registrator),

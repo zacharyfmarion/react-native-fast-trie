@@ -1873,6 +1873,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@craftzdog/react-native-buffer@npm:^6.0.5":
+  version: 6.0.5
+  resolution: "@craftzdog/react-native-buffer@npm:6.0.5"
+  dependencies:
+    ieee754: ^1.2.1
+    react-native-quick-base64: ^2.0.5
+  checksum: 921b8bc7f84778e355e81e475792399276d611a346a7e51b6266a45cf4aa82194beb3a8106af796ed143d958c8476070c59e3720c0eec0a3c31e368fbb08b350
+  languageName: node
+  linkType: hard
+
 "@cspotcode/source-map-support@npm:^0.8.0":
   version: 0.8.1
   resolution: "@cspotcode/source-map-support@npm:0.8.1"
@@ -4144,7 +4154,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"base64-js@npm:^1.1.2, base64-js@npm:^1.3.1":
+"base64-js@npm:^1.1.2, base64-js@npm:^1.3.1, base64-js@npm:^1.5.1":
   version: 1.5.1
   resolution: "base64-js@npm:1.5.1"
   checksum: 669632eb3745404c2f822a18fc3a0122d2f9a7a13f7fb8b5823ee19d1d2ff9ee5b52c53367176ea4ad093c332fd5ab4bd0ebae5a8e27917a4105a4cfc86b1005
@@ -11203,6 +11213,7 @@ __metadata:
     "@babel/core": ^7.20.0
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
+    "@craftzdog/react-native-buffer": ^6.0.5
     "@react-native-community/checkbox": ^0.5.17
     "@react-native/metro-config": ^0.72.11
     "@react-navigation/native": ^6.1.9
@@ -11266,6 +11277,18 @@ __metadata:
   peerDependencies:
     react-native: "*"
   checksum: 01563cb0a2cec575474b85a3663eddd93de6f5c260380997d445433916488863049e5acd9d2b45cf2f1e140c411890113934341d219394f4ba53b79aa7161037
+  languageName: node
+  linkType: hard
+
+"react-native-quick-base64@npm:^2.0.5":
+  version: 2.0.8
+  resolution: "react-native-quick-base64@npm:2.0.8"
+  dependencies:
+    base64-js: ^1.5.1
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 2634f007d5c7b931ebd9b2fe337037dd7d15dbcde4cfb974d703b9f2705a0b892542536a2b4cd125fb5d4c6e08c0901f052c900bd370786a9f3a46fe171efc5f
   languageName: node
   linkType: hard
 

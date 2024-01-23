@@ -5,8 +5,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Home } from './screens/Home';
 import { Benchmarks } from './screens/Benchmarks';
 import { Tests } from './screens/Tests/Tests';
+import type { RootStackParamList } from './screens/params';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (

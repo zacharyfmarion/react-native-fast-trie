@@ -11,6 +11,7 @@
     "build:ios": "cd ios && xcodebuild -workspace FastTrieExample.xcworkspace -scheme FastTrieExample -allowProvisioningUpdates -configuration Debug -sdk iphonesimulator CC=clang CPLUSPLUS=clang++ LD=clang LDPLUSPLUS=clang++ GCC_OPTIMIZATION_LEVEL=0 GCC_PRECOMPILE_PREFIX_HEADER=YES ASSETCATALOG_COMPILER_OPTIMIZATION=time DEBUG_INFORMATION_FORMAT=dwarf COMPILER_INDEX_STORE_ENABLE=NO"
   },
   "dependencies": {
+    "@craftzdog/react-native-buffer": "^6.0.5",
     "@react-native-community/checkbox": "^0.5.17",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
