@@ -1,17 +1,17 @@
-import { Trie } from '../Trie';
-import { FastTrie } from 'react-native-fast-trie';
 import { wordlistEN } from '../wordlists/allWordlists';
 import {
   type BenchmarkResult,
   createTrie,
   runBenchmark,
   getRandomWordSubstrings,
+  getTrie,
+  getFastTrie,
 } from './utils';
 
 function findBench(wordlist: string[]): BenchmarkResult {
   const words = getRandomWordSubstrings(wordlist, 10000);
-  const trie = createTrie(Trie, wordlist);
-  const fastTrie = createTrie(FastTrie, wordlist);
+  const trie = createTrie(getTrie, wordlist);
+  const fastTrie = createTrie(getFastTrie, wordlist);
 
   return runBenchmark(
     'Find',

@@ -1,17 +1,17 @@
-import { Trie } from '../Trie';
-import { FastTrie } from 'react-native-fast-trie';
 import { wordlistEN } from '../wordlists/allWordlists';
 import {
   getRandomWords,
   type BenchmarkResult,
   createTrie,
   runBenchmark,
+  getTrie,
+  getFastTrie,
 } from './utils';
 
 function containsBench(wordlist: string[]): BenchmarkResult {
   const words = getRandomWords(wordlist, 1000000);
-  const trie = createTrie(Trie, wordlist);
-  const fastTrie = createTrie(FastTrie, wordlist);
+  const trie = createTrie(getTrie, wordlist);
+  const fastTrie = createTrie(getFastTrie, wordlist);
 
   return runBenchmark(
     'Contains',

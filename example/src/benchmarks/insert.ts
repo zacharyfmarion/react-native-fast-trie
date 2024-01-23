@@ -1,10 +1,10 @@
-import { Trie } from '../Trie';
-import { FastTrie } from 'react-native-fast-trie';
 import {
   createTrie,
   type BenchmarkResult,
   runBenchmark,
   createBip39Dictionaries,
+  getTrie,
+  getFastTrie,
 } from './utils';
 import { wordlistEN } from '../wordlists/allWordlists';
 
@@ -12,10 +12,10 @@ function singleWordlistBench(wordlist: string[]): BenchmarkResult {
   return runBenchmark(
     'Single wordlist',
     () => {
-      createTrie(Trie, wordlist);
+      createTrie(getTrie, wordlist);
     },
     () => {
-      createTrie(FastTrie, wordlist);
+      createTrie(getFastTrie, wordlist);
     }
   );
 }
@@ -24,10 +24,10 @@ function allWordlistsBench(): BenchmarkResult {
   return runBenchmark(
     'All wordlists',
     () => {
-      createBip39Dictionaries(Trie);
+      createBip39Dictionaries(getTrie);
     },
     () => {
-      createBip39Dictionaries(FastTrie);
+      createBip39Dictionaries(getFastTrie);
     }
   );
 }

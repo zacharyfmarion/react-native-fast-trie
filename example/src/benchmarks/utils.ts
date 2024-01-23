@@ -11,6 +11,8 @@ import {
   wordlistZHCN,
   wordlistZHTW,
 } from '../wordlists/allWordlists';
+import { Trie } from '../Trie';
+import { FastTrie } from 'react-native-fast-trie';
 
 export type BenchmarkResult = {
   name: string;
@@ -44,8 +46,8 @@ export function runBenchmark(
   };
 }
 
-export function createTrie(trie: any, wordlist: string[]) {
-  const result = new trie();
+export function createTrie(getTrie: () => any, wordlist: string[]) {
+  const result = getTrie();
   for (const word of wordlist) {
     result.insert(word);
   }
@@ -88,19 +90,19 @@ const wordlists: [string, string[]][] = [
   ['zhTW', wordlistZHTW],
 ];
 
-export function createBip39Dictionaries(trie: any) {
+export function createBip39Dictionaries(getTrie: () => any) {
   const bip39Dictionaries: Record<string, any> = {
-    allLangs: new trie(),
-    en: new trie(),
-    es: new trie(),
-    fr: new trie(),
-    it: new trie(),
-    pt: new trie(),
-    cz: new trie(),
-    jp: new trie(),
-    kr: new trie(),
-    zhCN: new trie(),
-    zhTW: new trie(),
+    allLangs: getTrie(),
+    en: getTrie(),
+    es: getTrie(),
+    fr: getTrie(),
+    it: getTrie(),
+    pt: getTrie(),
+    cz: getTrie(),
+    jp: getTrie(),
+    kr: getTrie(),
+    zhCN: getTrie(),
+    zhTW: getTrie(),
   };
 
   wordlists.forEach(([locale, wordList]) => {
@@ -110,3 +112,13 @@ export function createBip39Dictionaries(trie: any) {
     }
   });
 }
+
+export const getTrie = () => new Trie();
+
+export const getFastTrie = () => {
+  return new FastTrie();
+};
+
+export const getFastTrieWithoutBurst = () => {
+  return new FastTrie({ burstThreshold: 1 });
+};
