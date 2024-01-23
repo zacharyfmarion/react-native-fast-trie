@@ -39,13 +39,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/KusStar/react-native-fast-trie",
-  "author": "kusstar <kussssss@outlook.com> (https://github.com/KusStar)",
+  "repository": "https://github.com/zacharyfmarion/react-native-fast-trie",
+  "author": "zacharyfmarion <zacharyfmarion@gmail.com> (https://github.com/zacharyfmarion)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KusStar/react-native-fast-trie/issues"
+    "url": "https://github.com/zacharyfmarion/react-native-fast-trie/issues"
   },
-  "homepage": "https://github.com/KusStar/react-native-fast-trie#readme",
+  "homepage": "https://github.com/zacharyfmarion/react-native-fast-trie#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
