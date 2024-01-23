@@ -11,33 +11,28 @@ yarn add react-native-fast-trie
 
 ## Benchmarks
 
-Benchmarks are taken compared to a commonly-used JS implementation.
+Benchmarks are taken compared to a commonly-used JS implementation on real devices built in release mode. You can build the example project on your device to reproduce these results.
 
 > NOTE: There are JS optimizations that could make the trie that we compare to faster, however since there is not a good trie npm module that implements them I am comparing against a naive approach.
 
-### Android
+Tests are as follows:
 
-Benchmarks taken on a Pixel 6 pro simulator, tested on bip39 wordlists & comparing to a commonly-used JS implementation. Note that batch inserting is much faster if you have all the items initially as it avoids the overhead of JSI communication between JS and C++.
+- **Single Wordlist**: Insert all the words in the english bip39 dictionary into a Trie
+- **Batch Insert**: Use the batchInsert method with the entire english bip39 array for FastTrie
+- **All Wordlists**: Create a separate trie for each bip39 wordlist by locale and insert into each
+- **Contains**: Access 1,000,000 random words from the english bip39 wordlist
+- **Find**: Find 1,000,000 substrings of random words from the english bip39 wordlist
 
-| Test            | JS Trie (ms) | FastTrie (ms) | Difference   |
-| --------------- | ------------ | ------------- | ------------ |
-| Insert EN       | 5.76         | 4.44          | 1.30x faster |
-| Batch Insert EN | 6.15         | 0.79          | 7.78x faster |
-| All wordlists   | 170.97       | 55.05         | 3.11x faster |
-| Contains        | 1400.26      | 1105.99       | 1.27x faster |
-| Find            | 10644.66     | 1249.59       | 8.52x faster |
+| Device            | Single Wordlist | Batch Insert  | All Wordlists | Contains     | Find          |
+| ----------------- | --------------- | ------------- | ------------- | ------------ | ------------- |
+| Pixel 5           | 4.64x faster    | 16.86x faster | 7.76x faster  | 2.94x faster | 24.63x faster |
+| Pixel 3a          | 3.26x faster    | 14.67x faster | 5.54x faster  | 3.06x faster | 26.23x faster |
+| Galaxy A10e       | 2.94x faster    | 9.83x faster  | 4.84x faster  | 3.95x faster | 11.47x faster |
+| iPhone 15 Pro Max | 3.78x faster    | 10.33x faster | 5.13x faster  | 3.43x faster | 23.83x faster |
+| iPhone 11 Pro Max | 4.65x faster    | 13.12x faster | 5.21x faster  | 3.35x faster | 23.79x faster |
+| iPhone 7          | 3.58x faster    | 12.03x faster | 5.65x faster  | 3.46x faster | 26.86x faster |
 
-### iOS
-
-Tested on an iphone 14 simulator. Note that inserting and contains are actually slower, but finding is much faster. Depending on the parameters you tweak you can change this behavior, but given the overhead of JSI a faster phone is going to see less benefit of using this library.
-
-| Test            | JS Trie (ms) | FastTrie (ms) | Difference   |
-| --------------- | ------------ | ------------- | ------------ |
-| Insert EN       | 6.01         | 6.73          | 0.89x faster |
-| Batch insert EN | 5.28         | 2.25          | 2.35x faster |
-| All wordlists   | 137.02       | 113.95        | 1.20x faster |
-| Contains        | 1665.45      | 2499.88       | 0.67x faster |
-| Find            | 12624.26     | 2453.31       | 5.15x faster |
+Screenshots of these benchmarks can be found in the [benchmarks folder](./benchmarks/).
 
 ## Usage
 
