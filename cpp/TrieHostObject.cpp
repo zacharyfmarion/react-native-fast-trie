@@ -20,7 +20,7 @@ namespace fasttrie
         jsi::Runtime &rt)
     {
         std::vector<jsi::PropNameID> keys;
-        const char *names[] = {"insert", "batchInsert", "contains", "find"};
+        const char *names[] = {"insert", "batchInsert", "contains", "find", "delete"};
         for (const auto &name : names)
         {
             keys.push_back(jsi::PropNameID::forAscii(rt, name));
@@ -42,6 +42,19 @@ namespace fasttrie
                 }
                 std::string key = arguments[0].asString(rt).utf8(rt);
                 _trie.insert(key);
+                return jsi::Value::undefined();
+            });
+        }
+        if (propName == "delete")
+        {
+            // Return a JavaScript function that inserts a string into the trie.
+            return HOST_FN(rt, "delete", 1, {
+                if (count != 1 || !arguments[0].isString())
+                {
+                    throw jsi::JSError(rt, "insert expects a single string argument");
+                }
+                std::string key = arguments[0].asString(rt).utf8(rt);
+                _trie.erase(key);
                 return jsi::Value::undefined();
             });
         }
