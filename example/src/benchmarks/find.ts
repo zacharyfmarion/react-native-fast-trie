@@ -4,13 +4,13 @@ import {
   createTrie,
   runBenchmark,
   getRandomWordSubstrings,
-  getTrie,
+  getJsTrie,
   getFastTrie,
 } from './utils';
 
 function findBench(wordlist: string[]): BenchmarkResult {
   const words = getRandomWordSubstrings(wordlist, 10000);
-  const trie = createTrie(getTrie, wordlist);
+  const trie = createTrie(getJsTrie, wordlist);
   const fastTrie = createTrie(getFastTrie, wordlist);
 
   return runBenchmark(

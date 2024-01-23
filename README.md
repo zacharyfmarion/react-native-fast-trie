@@ -11,17 +11,33 @@ yarn add react-native-fast-trie
 
 ## Benchmarks
 
-Benchmarks taken on a Pixel 6 pro simulator, comparing to a commonly-used JS implementation.
+Benchmarks are taken compared to a commonly-used JS implementation.
 
 > NOTE: There are JS optimizations that could make the trie that we compare to faster, however since there is not a good trie npm module that implements them I am comparing against a naive approach.
 
+### Android
+
+Benchmarks taken on a Pixel 6 pro simulator, tested on bip39 wordlists & comparing to a commonly-used JS implementation. Note that batch inserting is much faster if you have all the items initially as it avoids the overhead of JSI communication between JS and C++.
+
 | Test            | JS Trie URL (ms) | FastTrie (ms) | FastTrie Times Faster |
-|-----------------|------------------|---------------|-----------------------|
-| Single wordlist | 5.76             | 4.44          | 1.30                  |
+| --------------- | ---------------- | ------------- | --------------------- |
+| Insert EN       | 5.76             | 4.44          | 1.30                  |
+| Batch Insert EN | 6.15             | 0.79          | 7.78                  |
 | All wordlists   | 170.97           | 55.05         | 3.11                  |
 | Contains        | 1400.26          | 1105.99       | 1.27                  |
 | Find            | 10644.66         | 1249.59       | 8.52                  |
 
+### iOS
+
+Tested on an iphone 14 simulator. Note that inserting and contains are actually slower, but finding is much faster. Depending on the parameters you tweak you can change this behavior, but given the overhead of JSI a faster phone is going to see less benefit of using this library.
+
+| Test            | JS Trie URL (ms) | FastTrie (ms) | FastTrie Times Faster |
+| --------------- | ---------------- | ------------- | --------------------- |
+| Insert EN       | 6.01             | 6.73          | 0.89                  |
+| Batch insert EN | 5.28             | 2.25          | 2.35                  |
+| All wordlists   | 137.02           | 113.95        | 1.20                  |
+| Contains        | 1665.45          | 2499.88       | 0.67                  |
+| Find            | 12624.26         | 2453.31       | 5.15                  |
 
 ## Usage
 
@@ -29,23 +45,27 @@ Benchmarks taken on a Pixel 6 pro simulator, comparing to a commonly-used JS imp
 // index.js
 import { FastTrie } from 'react-native-fast-trie';
 
-const trie = new FastTrie();  
-console.log(trie.contains('test')) // false
+const trie = new FastTrie();
+console.log(trie.contains('test')); // false
 trie.insert('test');
-console.log(trie.contains('test')) // true
+console.log(trie.contains('test')); // true
 console.log(trie.find('te')); // ['test']
 trie.insert('test2');
 trie.insert('test3');
 // Limit to only 2 results
 console.log(trie.find('te', 2)); // ['test2', 'test3']
+// Insert multiple items at once. For large tries this is much more performant
+trie.batchInsert(['alpha', 'beta', 'gamma']);
 ```
 
 ## API
 
 ### Overview
+
 FastTrie is a high-performance trie implementation designed for React Native applications. It offers efficient operations for inserting elements, checking for their existence, and finding elements with a specific prefix. The implementation provides customization options to balance between speed and memory usage.
 
 ### `FastTrieOptions` Type
+
 This type allows configuration of the FastTrie instance.
 
 - `burstThreshold?: number`  
@@ -57,9 +77,11 @@ This type allows configuration of the FastTrie instance.
 ### `FastTrie` Class
 
 #### Constructor
+
 Creates a new instance of FastTrie.
 
 - **Parameters:**
+
   - `options: FastTrieOptions` (optional)  
     Configuration options for the trie. Includes `burstThreshold` and `maxLoadFactor`.
 
@@ -74,18 +96,33 @@ Creates a new instance of FastTrie.
   Inserts a string into the trie.
 
   - **Parameters:**
+
     - `item: string`  
       The string to be inserted into the trie.
 
   - **Example:**
     ```javascript
-    trie.insert("example");
+    trie.insert('example');
+    ```
+
+- `batchInsert(items: string[]): void`  
+  Inserts multiple strings into the trie in a single operation. This method is optimized for bulk insertions and is more efficient than inserting items individually.
+
+  - **Parameters:**
+
+    - `items: string[]`  
+      An array of strings to be inserted into the trie.
+
+  - **Example:**
+    ```javascript
+    trie.batchInsert(['apple', 'apricot', 'banana']);
     ```
 
 - `contains(item: string): boolean`  
   Checks if a string is present in the trie.
 
   - **Parameters:**
+
     - `item: string`  
       The string to be checked in the trie.
 
@@ -94,13 +131,14 @@ Creates a new instance of FastTrie.
 
   - **Example:**
     ```javascript
-    const isPresent = trie.contains("example");
+    const isPresent = trie.contains('example');
     ```
 
 - `find(prefix: string, maxResults?: number): boolean`  
   Finds all strings in the trie that start with the given prefix.
 
   - **Parameters:**
+
     - `prefix: string`  
       The prefix to search for in the trie.
     - `maxResults?: number` (optional)  
@@ -111,7 +149,7 @@ Creates a new instance of FastTrie.
 
   - **Example:**
     ```javascript
-    const results = trie.find("ex", 10);
+    const results = trie.find('ex', 10);
     ```
 
 ## Contributing

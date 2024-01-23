@@ -2,6 +2,7 @@ import { Platform, NativeModules } from 'react-native';
 
 type FastTrieInstance = {
   insert(item: string): void;
+  batchInsert(item: string[]): void;
   contains(item: string): boolean;
   find(prefix: string, maxResults?: number): boolean;
 };
@@ -70,6 +71,10 @@ export class FastTrie {
 
   insert(item: string): void {
     return this._trie.insert(item);
+  }
+
+  batchInsert(items: string[]): void {
+    return this._trie.batchInsert(items);
   }
 
   contains(item: string): boolean {

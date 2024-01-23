@@ -90,7 +90,7 @@ const wordlists: [string, string[]][] = [
   ['zhTW', wordlistZHTW],
 ];
 
-export function createBip39Dictionaries(getTrie: () => any) {
+export function createBip39Dictionaries(getTrie: () => any, batch = false) {
   const bip39Dictionaries: Record<string, any> = {
     allLangs: getTrie(),
     en: getTrie(),
@@ -106,14 +106,19 @@ export function createBip39Dictionaries(getTrie: () => any) {
   };
 
   wordlists.forEach(([locale, wordList]) => {
-    for (const word of wordList) {
-      bip39Dictionaries[locale].insert(word);
-      bip39Dictionaries.allLangs.insert(word);
+    if (batch) {
+      bip39Dictionaries[locale].batchInsert(wordList);
+      bip39Dictionaries.allLangs.batchInsert(wordList);
+    } else {
+      for (const word of wordList) {
+        bip39Dictionaries[locale].insert(word);
+        bip39Dictionaries.allLangs.insert(word);
+      }
     }
   });
 }
 
-export const getTrie = () => new Trie();
+export const getJsTrie = () => new Trie();
 
 export const getFastTrie = () => {
   return new FastTrie();

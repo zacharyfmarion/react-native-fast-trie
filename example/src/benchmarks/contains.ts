@@ -4,13 +4,13 @@ import {
   type BenchmarkResult,
   createTrie,
   runBenchmark,
-  getTrie,
+  getJsTrie,
   getFastTrie,
 } from './utils';
 
 function containsBench(wordlist: string[]): BenchmarkResult {
   const words = getRandomWords(wordlist, 1000000);
-  const trie = createTrie(getTrie, wordlist);
+  const trie = createTrie(getJsTrie, wordlist);
   const fastTrie = createTrie(getFastTrie, wordlist);
 
   return runBenchmark(
