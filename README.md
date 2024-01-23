@@ -49,14 +49,14 @@ trie.insert('test');
 console.log(trie.contains('test')); // true
 console.log(trie.find('te')); // ['test']
 
-trie.insert('test2');
-trie.insert('test3');
+trie.batchInsert(['test2', 'test3']);
 
 // Limit to only 2 results
 console.log(trie.find('te', 2)); // ['test2', 'test3']
 
-// Insert multiple items at once. For large tries this is much more performant
-trie.batchInsert(['alpha', 'beta', 'gamma']);
+trie.delete('test2');
+
+console.log(trie.contains('test2')); // false
 ```
 
 ## API
@@ -123,6 +123,14 @@ const isPresent = trie.contains('example');
 
 ```javascript
 const results = trie.find('ex', 10);
+```
+
+`delete(item: string): void`
+
+> Deletes a string if it exists in the trie
+
+```javascript
+trie.delete('apple');
 ```
 
 ## Contributing
