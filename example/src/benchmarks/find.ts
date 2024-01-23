@@ -4,8 +4,8 @@ import {
   createTrie,
   runBenchmark,
   getRandomWordSubstrings,
-  getJsTrie,
   getFastTrie,
+  getJsTrie,
 } from './utils';
 
 function findBench(wordlist: string[]): BenchmarkResult {

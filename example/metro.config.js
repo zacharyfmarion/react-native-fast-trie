@@ -28,6 +28,7 @@ const config = {
 
     extraNodeModules: modules.reduce((acc, name) => {
       acc[name] = path.join(__dirname, 'node_modules', name);
+      acc.stream = path.join(__dirname, 'node_modules', 'stream-browserify');
       return acc;
     }, {}),
   },

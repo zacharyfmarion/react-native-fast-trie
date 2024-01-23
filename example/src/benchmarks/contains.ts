@@ -4,8 +4,8 @@ import {
   type BenchmarkResult,
   createTrie,
   runBenchmark,
-  getJsTrie,
   getFastTrie,
+  getJsTrie,
 } from './utils';
 
 function containsBench(wordlist: string[]): BenchmarkResult {

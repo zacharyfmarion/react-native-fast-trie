@@ -13,6 +13,7 @@ import {
 } from '../wordlists/allWordlists';
 import { Trie } from '../Trie';
 import { FastTrie } from 'react-native-fast-trie';
+import { JsTrie } from '../JsTrie';
 
 export type BenchmarkResult = {
   name: string;
@@ -117,6 +118,8 @@ export function createBip39Dictionaries(getTrie: () => any, batch = false) {
     }
   });
 }
+
+export const getFastJsTrie = () => new JsTrie();
 
 export const getJsTrie = () => new Trie();
 

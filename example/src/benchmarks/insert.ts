@@ -3,8 +3,8 @@ import {
   type BenchmarkResult,
   runBenchmark,
   createBip39Dictionaries,
-  getJsTrie,
   getFastTrie,
+  getFastJsTrie,
 } from './utils';
 import { wordlistEN } from '../wordlists/allWordlists';
 
@@ -12,7 +12,7 @@ function singleWordlistBench(wordlist: string[]): BenchmarkResult {
   return runBenchmark(
     'Single wordlist',
     () => {
-      createTrie(getJsTrie, wordlist);
+      createTrie(getFastJsTrie, wordlist);
     },
     () => {
       createTrie(getFastTrie, wordlist);
@@ -24,7 +24,7 @@ function allWordlistsBench(): BenchmarkResult {
   return runBenchmark(
     'All wordlists',
     () => {
-      createBip39Dictionaries(getJsTrie);
+      createBip39Dictionaries(getFastJsTrie);
     },
     () => {
       createBip39Dictionaries(getFastTrie);
@@ -36,7 +36,7 @@ function batchInsertBench(wordlist: string[]): BenchmarkResult {
   return runBenchmark(
     'Batch insert',
     () => {
-      createTrie(getJsTrie, wordlist);
+      createTrie(getFastJsTrie, wordlist);
     },
     () => {
       const result = getFastTrie();

@@ -108,22 +108,22 @@ namespace fasttrie
                 }
 
                 auto range = _trie.equal_prefix_range(prefix);
-                auto it = range.first;
 
-                // Because we don't know how many elements are in the range but we need to statically
-                // allocate the array, we first put the results in a vector and then copy them into the
-                // jsi::Array object
-                std::vector<std::string> results;
-                while (it != range.second && results.size() < maxResults)
+                // First iteration to determine the size
+                size_t determinedSize = 0;
+                for (auto it = range.first; it != range.second && determinedSize < maxResults; ++it)
                 {
-                    results.push_back(it.key());
-                    ++it;
+                    ++determinedSize;
                 }
 
-                jsi::Array resultArray = jsi::Array(rt, results.size());
-                for (size_t i = 0; i < results.size(); ++i)
+                // Create the jsi::Array with the determined size
+                jsi::Array resultArray = jsi::Array(rt, determinedSize);
+
+                // Second iteration to populate the jsi::Array
+                size_t index = 0;
+                for (auto it = range.first; it != range.second && index < maxResults; ++it, ++index)
                 {
-                    resultArray.setValueAtIndex(rt, i, jsi::String::createFromUtf8(rt, results[i]));
+                    resultArray.setValueAtIndex(rt, index, jsi::String::createFromUtf8(rt, it.key()));
                 }
 
                 return resultArray;
