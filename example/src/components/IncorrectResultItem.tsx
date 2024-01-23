@@ -11,7 +11,7 @@ export const IncorrectResultItem: React.FC<IncorrectResultItemProps> = ({
   description,
   errorMsg,
 }: IncorrectResultItemProps) => {
-  const emoji = '😵‍💫';
+  const emoji = '❌';
   const fullText = emoji + ' [' + description + '] ---> ' + errorMsg;
 
   return (
