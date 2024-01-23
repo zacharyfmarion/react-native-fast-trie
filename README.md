@@ -2,6 +2,10 @@
 
 A fast, memory-efficient Trie implementation for React Native. Uses Tessel's [HAT-trie](https://github.com/Tessil/hat-trie).
 
+- 💾 Low memory footprint
+- ⚡️ Extremely fast for contructing large tries
+- 🧪 Well tested in JS and C++
+
 ## Installation
 
 ```sh
@@ -11,9 +15,7 @@ yarn add react-native-fast-trie
 
 ## Benchmarks
 
-Benchmarks are taken compared to a commonly-used JS implementation on real devices built in release mode. You can build the example project on your device to reproduce these results.
-
-> NOTE: There are JS optimizations that could make the trie that we compare to faster, however since there is not a good trie npm module that implements them I am comparing against a naive approach.
+Benchmarks are taken compared to a commonly-used JS implementation (trie-typed) on real devices built in release mode. You can build the example project on your device to reproduce these results.
 
 Tests are as follows:
 
