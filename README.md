@@ -19,25 +19,25 @@ Benchmarks are taken compared to a commonly-used JS implementation.
 
 Benchmarks taken on a Pixel 6 pro simulator, tested on bip39 wordlists & comparing to a commonly-used JS implementation. Note that batch inserting is much faster if you have all the items initially as it avoids the overhead of JSI communication between JS and C++.
 
-| Test            | JS Trie URL (ms) | FastTrie (ms) | FastTrie Times Faster |
-| --------------- | ---------------- | ------------- | --------------------- |
-| Insert EN       | 5.76             | 4.44          | 1.30                  |
-| Batch Insert EN | 6.15             | 0.79          | 7.78                  |
-| All wordlists   | 170.97           | 55.05         | 3.11                  |
-| Contains        | 1400.26          | 1105.99       | 1.27                  |
-| Find            | 10644.66         | 1249.59       | 8.52                  |
+| Test            | JS Trie (ms) | FastTrie (ms) | Difference   |
+| --------------- | ------------ | ------------- | ------------ |
+| Insert EN       | 5.76         | 4.44          | 1.30x faster |
+| Batch Insert EN | 6.15         | 0.79          | 7.78x faster |
+| All wordlists   | 170.97       | 55.05         | 3.11x faster |
+| Contains        | 1400.26      | 1105.99       | 1.27x faster |
+| Find            | 10644.66     | 1249.59       | 8.52x faster |
 
 ### iOS
 
 Tested on an iphone 14 simulator. Note that inserting and contains are actually slower, but finding is much faster. Depending on the parameters you tweak you can change this behavior, but given the overhead of JSI a faster phone is going to see less benefit of using this library.
 
-| Test            | JS Trie URL (ms) | FastTrie (ms) | FastTrie Times Faster |
-| --------------- | ---------------- | ------------- | --------------------- |
-| Insert EN       | 6.01             | 6.73          | 0.89                  |
-| Batch insert EN | 5.28             | 2.25          | 2.35                  |
-| All wordlists   | 137.02           | 113.95        | 1.20                  |
-| Contains        | 1665.45          | 2499.88       | 0.67                  |
-| Find            | 12624.26         | 2453.31       | 5.15                  |
+| Test            | JS Trie (ms) | FastTrie (ms) | Difference   |
+| --------------- | ------------ | ------------- | ------------ |
+| Insert EN       | 6.01         | 6.73          | 0.89x faster |
+| Batch insert EN | 5.28         | 2.25          | 2.35x faster |
+| All wordlists   | 137.02       | 113.95        | 1.20x faster |
+| Contains        | 1665.45      | 2499.88       | 0.67x faster |
+| Find            | 12624.26     | 2453.31       | 5.15x faster |
 
 ## Usage
 
@@ -95,11 +95,6 @@ Creates a new instance of FastTrie.
 - `insert(item: string): void`  
   Inserts a string into the trie.
 
-  - **Parameters:**
-
-    - `item: string`  
-      The string to be inserted into the trie.
-
   - **Example:**
     ```javascript
     trie.insert('example');
@@ -107,11 +102,6 @@ Creates a new instance of FastTrie.
 
 - `batchInsert(items: string[]): void`  
   Inserts multiple strings into the trie in a single operation. This method is optimized for bulk insertions and is more efficient than inserting items individually.
-
-  - **Parameters:**
-
-    - `items: string[]`  
-      An array of strings to be inserted into the trie.
 
   - **Example:**
     ```javascript
@@ -121,14 +111,6 @@ Creates a new instance of FastTrie.
 - `contains(item: string): boolean`  
   Checks if a string is present in the trie.
 
-  - **Parameters:**
-
-    - `item: string`  
-      The string to be checked in the trie.
-
-  - **Returns:**  
-    `true` if the string is present, `false` otherwise.
-
   - **Example:**
     ```javascript
     const isPresent = trie.contains('example');
@@ -136,16 +118,6 @@ Creates a new instance of FastTrie.
 
 - `find(prefix: string, maxResults?: number): boolean`  
   Finds all strings in the trie that start with the given prefix.
-
-  - **Parameters:**
-
-    - `prefix: string`  
-      The prefix to search for in the trie.
-    - `maxResults?: number` (optional)  
-      The maximum number of results to return.
-
-  - **Returns:**  
-    `true` if the operation is successful, `false` otherwise.
 
   - **Example:**
     ```javascript
