@@ -375,7 +375,7 @@ PODS:
   - React-jsinspector (0.72.7)
   - React-logger (0.72.7):
     - glog
-  - react-native-fast-trie (0.1.0):
+  - react-native-fast-trie (0.1.1):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - react-native-performance (5.1.0):
@@ -698,7 +698,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: c49502e5d02112247ee4526bc3ccfc891ae3eb9b
   React-jsinspector: 8baadae51f01d867c3921213a25ab78ab4fbcd91
   React-logger: 8edc785c47c8686c7962199a307015e2ce9a0e4f
-  react-native-fast-trie: d6dece467217d9eecceaa1b33c0ff2df084be3c7
+  react-native-fast-trie: a8224072111e382b94ea52eefee8b18863383a0f
   react-native-performance: cef2b618d47b277fb5c3280b81a3aad1e72f2886
   React-NativeModulesApple: b6868ee904013a7923128892ee4a032498a1024a
   React-perflogger: 31ea61077185eb1428baf60c0db6e2886f141a5a

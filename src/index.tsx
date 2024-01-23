@@ -4,7 +4,7 @@ type FastTrieInstance = {
   insert(item: string): void;
   batchInsert(item: string[]): void;
   contains(item: string): boolean;
-  find(prefix: string, maxResults?: number): boolean;
+  find(prefix: string, maxResults?: number): string[];
 };
 
 type FastTrieModule = (
@@ -81,7 +81,7 @@ export class FastTrie {
     return this._trie.contains(item);
   }
 
-  find(prefix: string, maxResults?: number): boolean {
+  find(prefix: string, maxResults?: number): string[] {
     return this._trie.find(prefix, maxResults);
   }
 }
