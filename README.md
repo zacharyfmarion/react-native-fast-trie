@@ -92,37 +92,37 @@ Creates a new instance of FastTrie.
 
 #### Methods
 
-- `insert(item: string): void`  
-  Inserts a string into the trie.
+`insert(item: string): void`
 
-  - **Example:**
-    ```javascript
-    trie.insert('example');
-    ```
+> Inserts a string into the trie.
 
-- `batchInsert(items: string[]): void`  
-  Inserts multiple strings into the trie in a single operation. This method is optimized for bulk insertions and is more efficient than inserting items individually.
+```javascript
+trie.insert('example');
+```
 
-  - **Example:**
-    ```javascript
-    trie.batchInsert(['apple', 'apricot', 'banana']);
-    ```
+`batchInsert(items: string[]): void`
 
-- `contains(item: string): boolean`  
-  Checks if a string is present in the trie.
+> Inserts multiple strings into the trie in a single operation. This method is optimized for bulk insertions and is more efficient than inserting items individually.
 
-  - **Example:**
-    ```javascript
-    const isPresent = trie.contains('example');
-    ```
+```javascript
+trie.batchInsert(['apple', 'apricot', 'banana']);
+```
 
-- `find(prefix: string, maxResults?: number): boolean`  
-  Finds all strings in the trie that start with the given prefix.
+`contains(item: string): boolean`
 
-  - **Example:**
-    ```javascript
-    const results = trie.find('ex', 10);
-    ```
+> Checks if a string is present in the trie.
+
+```javascript
+const isPresent = trie.contains('example');
+```
+
+`find(prefix: string, maxResults?: number): boolean`
+
+> Finds all strings in the trie that start with the given prefix.
+
+```javascript
+const results = trie.find('ex', 10);
+```
 
 ## Contributing
 
