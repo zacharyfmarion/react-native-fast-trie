@@ -57,7 +57,6 @@ export function registerFindAndContainsTests() {
 
     it('should throw an error when contains is called with a non-string value', () => {
       const trie = new FastTrie();
-      // @ts-expect-error
       expect(() => trie.contains(123 as unknown as string)).to.throw();
     });
   });
