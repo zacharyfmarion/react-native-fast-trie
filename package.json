@@ -1,6 +1,6 @@
 {
   "name": "react-native-fast-trie",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fast Trie for React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
