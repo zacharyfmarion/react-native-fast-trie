@@ -6,7 +6,7 @@ import {
   getFastTrie,
   getFastJsTrie,
 } from './utils';
-import { wordlistEN } from '../wordlists/allWordlists';
+import { wordlistEN } from '../../../wordlists/allWordlists';
 
 function singleWordlistBench(wordlist: string[]): BenchmarkResult {
   return runBenchmark(

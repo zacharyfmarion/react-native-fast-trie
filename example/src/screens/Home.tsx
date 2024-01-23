@@ -94,6 +94,7 @@ export function Home() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    backgroundColor: 'white',
   },
   testList: {
     flex: 9,

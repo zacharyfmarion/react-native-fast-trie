@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { Text } from './Text';
 
 type IncorrectResultItemProps = {
   description: string;
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     borderWidth: 1,
-    margin: 10,
+    margin: 5,
     flexDirection: 'column',
     borderRadius: 5,
     padding: 5,

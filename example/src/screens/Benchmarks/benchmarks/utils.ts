@@ -10,10 +10,10 @@ import {
   wordlistPT,
   wordlistZHCN,
   wordlistZHTW,
-} from '../wordlists/allWordlists';
-import { Trie } from '../Trie';
+} from '../../../wordlists/allWordlists';
+import { Trie } from '../../../Trie';
 import { FastTrie } from 'react-native-fast-trie';
-import { JsTrie } from '../JsTrie';
+import { JsTrie } from '../../../JsTrie';
 
 export type BenchmarkResult = {
   name: string;

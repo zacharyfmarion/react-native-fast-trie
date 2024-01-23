@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Home } from './screens/Home';
-import { Benchmarks } from './screens/Benchmarks';
+import { Benchmarks } from './screens/Benchmarks/Benchmarks';
 import { Tests } from './screens/Tests/Tests';
 import type { RootStackParamList } from './screens/params';
 

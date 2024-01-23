@@ -3,13 +3,22 @@ import { StyleSheet, Text as TextNative } from 'react-native';
 
 type Props = {
   children: React.ReactNode;
+  style?: any[];
 };
 
-export function Text({ children }: Props) {
-  return <TextNative style={styles.text}>{children}</TextNative>;
+export function Text({ children, style }: Props) {
+  const styles = React.useMemo(() => {
+    const res = [textStyles.text];
+    if (style) {
+      res.concat(style);
+    }
+    return res;
+  }, [style]);
+
+  return <TextNative style={styles}>{children}</TextNative>;
 }
 
-const styles = StyleSheet.create({
+const textStyles = StyleSheet.create({
   text: {
     color: 'black',
   },

@@ -83,6 +83,7 @@ export function Tests({ route }: TestingScreenProps) {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    backgroundColor: 'white',
   },
   testList: {
     flex: 9,

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
-import { startBench } from '../benchmarks/bench';
-import { type BenchmarkResult } from '../benchmarks/utils';
+import { startBench } from './benchmarks/bench';
+import { type BenchmarkResult } from './benchmarks/utils';
 
 export function Benchmarks() {
   const [result, setResult] = React.useState<BenchmarkResult[]>();

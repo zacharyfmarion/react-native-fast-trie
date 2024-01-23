@@ -1,4 +1,4 @@
-import { wordlistEN } from '../wordlists/allWordlists';
+import { wordlistEN } from '../../../wordlists/allWordlists';
 import {
   getRandomWords,
   type BenchmarkResult,
