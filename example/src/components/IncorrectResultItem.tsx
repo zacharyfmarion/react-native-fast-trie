@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     borderWidth: 1,
-    margin: 5,
+    margin: 10,
+    marginBottom: 5,
     flexDirection: 'column',
     borderRadius: 5,
     padding: 5,
