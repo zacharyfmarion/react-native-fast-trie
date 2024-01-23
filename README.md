@@ -47,13 +47,17 @@ import { FastTrie } from 'react-native-fast-trie';
 
 const trie = new FastTrie();
 console.log(trie.contains('test')); // false
+
 trie.insert('test');
 console.log(trie.contains('test')); // true
 console.log(trie.find('te')); // ['test']
+
 trie.insert('test2');
 trie.insert('test3');
+
 // Limit to only 2 results
 console.log(trie.find('te', 2)); // ['test2', 'test3']
+
 // Insert multiple items at once. For large tries this is much more performant
 trie.batchInsert(['alpha', 'beta', 'gamma']);
 ```
