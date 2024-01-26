@@ -5,5 +5,7 @@ export type TestingScreenProps = {
 export type RootStackParamList = {
   Home: undefined;
   Benchmarks: undefined;
+  SpeedBenchmarks: undefined;
+  MemoryBenchmarks: undefined;
   Tests: TestingScreenProps;
 };

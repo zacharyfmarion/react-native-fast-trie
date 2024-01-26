@@ -158,5 +158,8 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "react-native-heap-profiler": "^0.1.0"
   }
 }

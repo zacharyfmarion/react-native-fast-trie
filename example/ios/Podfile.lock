@@ -376,7 +376,10 @@ PODS:
   - React-jsinspector (0.72.7)
   - React-logger (0.72.7):
     - glog
-  - react-native-fast-trie (0.1.3):
+  - react-native-fast-trie (0.2.1):
+    - RCT-Folly (= 2021.07.22.00)
+    - React-Core
+  - react-native-heap-profiler (0.2.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - react-native-performance (5.1.0):
@@ -551,6 +554,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-fast-trie (from `../..`)
+  - react-native-heap-profiler (from `../node_modules/react-native-heap-profiler`)
   - react-native-performance (from `../node_modules/react-native-performance`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
@@ -638,6 +642,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-fast-trie:
     :path: "../.."
+  react-native-heap-profiler:
+    :path: "../node_modules/react-native-heap-profiler"
   react-native-performance:
     :path: "../node_modules/react-native-performance"
   react-native-safe-area-context:
@@ -687,7 +693,7 @@ SPEC CHECKSUMS:
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
-  DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
+  DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: 5fbbff1d7734827299274638deb8ba3024f6c597
   FBReactNativeSpec: 638095fe8a01506634d77b260ef8a322019ac671
   Flipper: 6edb735e6c3e332975d1b17956bcc584eccf5818
@@ -699,7 +705,7 @@ SPEC CHECKSUMS:
   Flipper-PeerTalk: 116d8f857dc6ef55c7a5a75ea3ceaafe878aadc9
   FlipperKit: 2efad7007d6745a3f95e4034d547be637f89d3f6
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
-  glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
+  glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: 9180d43df05c1ed658a87cc733dc3044cf90c00a
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
@@ -718,7 +724,8 @@ SPEC CHECKSUMS:
   React-jsiexecutor: c49502e5d02112247ee4526bc3ccfc891ae3eb9b
   React-jsinspector: 8baadae51f01d867c3921213a25ab78ab4fbcd91
   React-logger: 8edc785c47c8686c7962199a307015e2ce9a0e4f
-  react-native-fast-trie: ddbfff54a6d78c48a25c228a13bacdec1551a321
+  react-native-fast-trie: 00f760ff572c0618f365299cc3145c8c91436ffe
+  react-native-heap-profiler: ec2d968bc91ac6096fc8c0192070bef0d7e3f266
   react-native-performance: cef2b618d47b277fb5c3280b81a3aad1e72f2886
   react-native-safe-area-context: 0ee144a6170530ccc37a0fd9388e28d06f516a89
   React-NativeModulesApple: b6868ee904013a7923128892ee4a032498a1024a

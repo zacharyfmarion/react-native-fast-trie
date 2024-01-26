@@ -1,39 +1,29 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
-import { startBench } from './benchmarks/bench';
-import { type BenchmarkResult } from './benchmarks/utils';
+import { StyleSheet, View } from 'react-native';
+import { Button } from '../../components/Button';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../params';
 
 export function Benchmarks() {
-  const [result, setResult] = React.useState<BenchmarkResult[]>();
-  React.useEffect(() => {
-    setTimeout(() => {
-      setResult(startBench());
-    }, 100);
-  }, []);
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList, 'Home'>>();
 
   return (
     <View style={styles.container}>
-      {result ? (
-        result.map((it, index) => (
-          // eslint-disable-next-line react-native/no-inline-styles
-          <View key={index} style={{ marginBottom: 32 }}>
-            <Text style={styles.textColor}>Test: {it.name}</Text>
-            <Text style={styles.textColor}>
-              JS Trie URL: {it.b1.toFixed(2)}ms
-            </Text>
-            <Text style={styles.textColor}>FastTrie: {it.b2.toFixed(2)}ms</Text>
-            <Text style={styles.textColor}>
-              FastTrie is {(it.b1 / it.b2).toFixed(2)}x faster
-            </Text>
-          </View>
-        ))
-      ) : (
-        <View>
-          <ActivityIndicator size={64} />
-          <Text style={styles.textColor}>Running benchmark...</Text>
-        </View>
-      )}
+      <Button
+        title="Speed benchmarks"
+        onPress={() => {
+          navigation.navigate('SpeedBenchmarks');
+        }}
+      />
+      <Button
+        title="Memory benchmarks"
+        onPress={() => {
+          navigation.navigate('MemoryBenchmarks');
+        }}
+      />
     </View>
   );
 }

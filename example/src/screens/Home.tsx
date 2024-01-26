@@ -52,6 +52,7 @@ export function Home() {
   const [tests, toggle, clearAll, checkAll] = useTests();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList, 'Home'>>();
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.testList}>
